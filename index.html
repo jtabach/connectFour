@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Connect Four</title>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body>
+        
+        
+        <div class="container">
+            <h1>Connect Four</h1>
+            <hr />
+            <br >
+            <div id="player1" class="playerTurn">
+                <h2>Player 1</h2>
+                <img id="redPlayer" src="red.png">
+            </div>
+            <div id="board">
+                <table>
+                    <tr id="arrows">
+                        <td class="arrow"><button id="col7"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOg3T_SX18ipmWbMesMYoxw7Z2hhxnbwvzDuuWTnrcYfKujqp80Q"></button></td>
+                        <td class="arrow col6"><button id="col6"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOg3T_SX18ipmWbMesMYoxw7Z2hhxnbwvzDuuWTnrcYfKujqp80Q"></button></td>
+                        <td class="arrow col5"><button id="col5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOg3T_SX18ipmWbMesMYoxw7Z2hhxnbwvzDuuWTnrcYfKujqp80Q"></button></td>
+                        <td class="arrow col4"><button id="col4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOg3T_SX18ipmWbMesMYoxw7Z2hhxnbwvzDuuWTnrcYfKujqp80Q"></button></td>
+                        <td class="arrow col3"><button id="col3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOg3T_SX18ipmWbMesMYoxw7Z2hhxnbwvzDuuWTnrcYfKujqp80Q"></button></td>
+                        <td class="arrow col2"><button id="col2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOg3T_SX18ipmWbMesMYoxw7Z2hhxnbwvzDuuWTnrcYfKujqp80Q"></button></td>
+                        <td class="arrow col1"><button id="col1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOg3T_SX18ipmWbMesMYoxw7Z2hhxnbwvzDuuWTnrcYfKujqp80Q"></button></td>
+                    </tr>
+                    <tr id="row7">
+                        <td class="free col7"></td>
+                        <td class="free col6"></td>
+                        <td class="free col5"></td>
+                        <td class="free col4"></td>
+                        <td class="free col3"></td>
+                        <td class="free col2"></td>
+                        <td class="free col1"></td>
+                    </tr>
+                    <tr id="row6">
+                        <td class="free col7"></td>
+                        <td class="free col6"></td>
+                        <td class="free col5"></td>
+                        <td class="free col4"></td>
+                        <td class="free col3"></td>
+                        <td class="free col2"></td>
+                        <td class="free col1"></td>
+                    </tr>
+                    <tr id="row5">
+                        <td class="free col7"></td>
+                        <td class="free col6"></td>
+                        <td class="free col5"></td>
+                        <td class="free col4"></td>
+                        <td class="free col3"></td>
+                        <td class="free col2"></td>
+                        <td class="free col1"></td>
+                    </tr>
+                    <tr id="row4">
+                        <td class="free col7"></td>
+                        <td class="free col6"></td>
+                        <td class="free col5"></td>
+                        <td class="free col4"></td>
+                        <td class="free col3"></td>
+                        <td class="free col2"></td>
+                        <td class="free col1"></td>
+                    </tr>
+                    <tr id="row3">
+                        <td class="free col7"></td>
+                        <td class="free col6"></td>
+                        <td class="free col5"></td>
+                        <td class="free col4"></td>
+                        <td class="free col3"></td>
+                        <td class="free col2"></td>
+                        <td class="free col1"></td>
+                    </tr>
+                    <tr id="row2">
+                        <td class="free col7"></td>
+                        <td class="free col6"></td>
+                        <td class="free col5"></td>
+                        <td class="free col4"></td>
+                        <td class="free col3"></td>
+                        <td class="free col2"></td>
+                        <td class="free col1"></td>
+                    </tr>
+                    <tr id="row1">
+                        <td class="free bot col7"></td>
+                        <td class="free bot col6"></td>
+                        <td class="free bot col5"></td>
+                        <td class="free bot col4"></td>
+                        <td class="free bot col3"></td>
+                        <td class="free bot col2"></td>
+                        <td class="free bot col1"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="player2">
+                <h2>Player 2</h2>
+                <img id="bluePlayer" src="blue.png">
+            </div>
+            <button id="newGame">New Game</button>
+        </div>
+        
+        <style>
+            
+            .container {
+                margin: 0 auto;
+                text-align:center;
+                width:1060px;
+                min-width:1060px;
+            }
+            
+            table {
+                display: inline-block;
+                border-collapse: collapse;
+            }
+            
+            .free {
+                margin:0;
+                padding:0;
+                background: url("white.png") no-repeat;
+                background-size: 80px 80px;
+                height:80px;
+                width:80px;
+                border: none;
+            }
+            .red {
+                margin:0;
+                padding:0;
+                background: url("red.png") no-repeat;
+                background-size: 80px 80px;
+                height:80px;
+                width:80px;
+                border: none;
+            }
+            .blue {
+                margin:0;
+                padding:0;
+                background: url("blue.png") no-repeat;
+                background-size: 80px 80px;
+                height:80px;
+                width:80px;
+                border: none;
+            }
+            
+            button {
+                height: 78px;
+                width: 68px;
+                padding:0;
+                margin:0;
+                outline: none;
+                cursor: pointer;
+            }
+            
+            img {
+                height: 78px;
+                width: 60px;
+            }
+            
+            #board {
+                float: left;
+                width: 580px;
+                min-width: 580px
+            }
+            
+            #player1, #player2 {
+                margin-top: 100px;
+                float: left;
+                width: 240px;
+                min-width: 240px
+            }
+            
+            #redPlayer, #bluePlayer {
+                height: 100px;
+                width:100px;
+                
+            }
+            
+            .playerTurn {
+                background: yellow;
+            }
+            
+            #newGame {
+                margin:0px;
+                margin-top: 280px;
+                text-align: center;
+                padding: 5px;
+                width: 150px;
+                font-size: 20px;
+                background: #02d90b;
+                color: white;
+            }
+            
+        </style>
+    </body>
+</html>
