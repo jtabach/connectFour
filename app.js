@@ -1,20 +1,39 @@
-// Connect FOur by Jeff Tabachnick
+// Connect Four by Jeff Tabachnick
 var rowArray = ["#row1", "#row2", "#row3", "#row4", "#row5", "#row6", "#row7"];
+var colArray = ["col1", "col2", "col3", "col4", "col5", "col6", "col7"];
+
+var color;
 
 var checkForFree = function(column) {
     
     for (var i = rowArray.length-1; i >= 0; i--) {
         if ( $(rowArray[i] + "> ." + column).hasClass('bot') ) {
-            console.log('clicked');
             $(rowArray[i] + "> ." + column)
                 .removeClass('bot')
                 .removeClass('free');
             
             placeColorPiece(i, column);
             checkIfTopRow(i, column);
+            checkForWin(i, column);
         }
     }
     
+}
+
+var checkForWin = function(i, column) {
+    var startRow = i;
+    var startCol;
+    var count = 1;
+    
+    colArray.forEach(function(elem, index) {
+        if (elem === column) {
+            startCol = index;
+        }
+    });
+//    checkDiag1
+    
+    console.log(startRow);
+    console.log(startCol);
 }
 
 var checkIfTopRow = function(i, column) {
@@ -26,10 +45,12 @@ var checkIfTopRow = function(i, column) {
 
 var placeColorPiece = function(i, column) {
     if ( $('#player1').hasClass('playerTurn') ) {
-        $(rowArray[i] + "> ." + column).addClass('red');
+        color = 'red';
+        $(rowArray[i] + "> ." + column).addClass(color);
         change1to2();
     } else {
-        $(rowArray[i] + "> ." + column).addClass('blue');
+        color = 'blue';
+        $(rowArray[i] + "> ." + column).addClass(color);
         change2to1();
     }
 };
@@ -56,7 +77,7 @@ var resetGame = function() {
 
 $(document).ready(function() {
     
-    $('#player2 .playerTurn').hide();
+    
     
     $('button').on('click', function() {
         var column = this.id;
